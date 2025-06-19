@@ -50,7 +50,9 @@ jobs:
       project-name: "hands-on-01"
       language: "java"
       build: "maven"
-    secrets: inherit
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
   call-workflow-ci-package-docker:
     needs: call-workflow-ci-java-maven
