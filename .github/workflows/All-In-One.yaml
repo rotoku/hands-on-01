@@ -10,10 +10,6 @@ jobs:
     name: "Call Workflow CI Lint Docker"
     runs-on: "ubuntu-latest"
     environment: "develop"
-    defaults:
-      run:
-        shell: bash
-        working-directory: app    
     steps:
       - name: Actions Checkout
         uses: actions/checkout@v4
@@ -21,7 +17,7 @@ jobs:
       - name: Hadolint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0        
         with:
-          dockerfile: Dockerfile
+          dockerfile: app/Dockerfile
         
 
   call-workflow-ci-java-maven:
