@@ -14,7 +14,8 @@ jobs:
     - name: echo
       run: echo "Calling reusable workflow for CI Lint Docker"
 
-  call-workflow-ci-java-gradle:
+  call-workflow-ci-java-maven:
+    needs: call-workflow-ci-lint-docker
     uses: kumabes-org/reusable-workflows-ci-java-maven/.github/workflows/ci.yml@main
     with:
       runs-on: "ubuntu-latest"
@@ -26,3 +27,50 @@ jobs:
       java-version: "21"
       maven-version: "3.9.9"
     secrets: inherit
+
+  call-workflow-ci-quality-code:
+    needs: call-workflow-ci-java-maven
+    name: "Call Workflow CI Quality Code"
+    runs-on: "ubuntu-latest"
+    environment: "develop"
+    steps:
+    - name: echo
+      run: echo "Calling reusable workflow for CI Quality Code"
+
+  call-workflow-ci-package-docker:
+    needs: call-workflow-ci-java-maven
+    name: "Call Workflow CI Package Docker"
+    runs-on: "ubuntu-latest"
+    environment: "develop"
+    steps:
+    - name: echo
+      run: echo "Calling reusable workflow for CI Package Docker"
+
+  call-workflow-ci-security-docker:
+    needs:
+      - call-workflow-ci-package-docker
+      - call-workflow-ci-quality-code
+    name: "Call Workflow CI Security Docker"
+    runs-on: "ubuntu-latest"
+    environment: "develop"
+    steps:
+    - name: echo
+      run: echo "Calling reusable workflow for CI Security Docker"
+
+  call-workflow-ci-publish-docker:
+    needs: call-workflow-ci-security-docker
+    name: "Call Workflow CI Publish Docker"
+    runs-on: "ubuntu-latest"
+    environment: "develop"
+    steps:
+    - name: echo
+      run: echo "Calling reusable workflow for CI Publish Docker"
+
+  call-workflow-cd-deploy-aws:
+    needs: call-workflow-ci-publish-docker
+    name: "Call Workflow CD Deploy AWS"
+    runs-on: "ubuntu-latest"
+    environment: "develop"
+    steps:
+    - name: echo
+      run: echo "Calling reusable workflow for CD Deploy AWS"
