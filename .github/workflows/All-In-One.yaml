@@ -14,10 +14,16 @@ jobs:
       - name: Actions Checkout
         uses: actions/checkout@v4
 
+      - name: Get Dockerfile
+        id: get-dockerfile
+        run: |
+          DOCKERFILE=$(find . -type f \( -name "*Dockerfile*" -o -name "*dockerfile*" \) -not -path "./.git*" -not -path "*/vendor/*")
+          echo "dockerfile=${DOCKERFILE}" >> $GITHUB_ENV
+      
       - name: Hadolint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0        
         with:
-          dockerfile: app/Dockerfile
+          dockerfile: "${{ env.dockerfile }}"
         
 
   call-workflow-ci-java-maven:
@@ -35,13 +41,16 @@ jobs:
     secrets: inherit
 
   call-workflow-ci-quality-code:
-    needs: call-workflow-ci-java-maven
-    name: "Call Workflow CI Quality Code"
-    runs-on: "ubuntu-latest"
-    environment: "develop"
-    steps:
-    - name: echo
-      run: echo "Calling reusable workflow for CI Quality Code"
+    uses: kumabes-org/reusable-workflows-sonarqube/.github/workflows/main.yml@main
+    with:
+      runs-on: "ubuntu-latest"
+      environment: "develop"
+      working-directory: "app"
+      shell: "bash"
+      project-name: "hands-on-01"
+      language: "java"
+      build: "maven"
+    secrets: inherit
 
   call-workflow-ci-package-docker:
     needs: call-workflow-ci-java-maven
