@@ -6,6 +6,14 @@ on:
       - "feature**"
 
 jobs:
+  call-workflow-ci-lint-docker:
+    name: "Call Workflow CI Lint Docker"
+    runs-on: "ubuntu-latest"
+    environment: "develop"
+    steps:
+    - name: echo
+      run: echo "Calling reusable workflow for CI Lint Docker"
+
   call-workflow-ci-java-gradle:
     uses: kumabes-org/reusable-workflows-ci-java-maven/.github/workflows/ci.yml@main
     with:
