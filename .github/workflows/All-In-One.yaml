@@ -10,9 +10,19 @@ jobs:
     name: "Call Workflow CI Lint Docker"
     runs-on: "ubuntu-latest"
     environment: "develop"
+    defaults:
+      run:
+        shell: bash
+        working-directory: app    
     steps:
-    - name: echo
-      run: echo "Calling reusable workflow for CI Lint Docker"
+      - name: Actions Checkout
+        uses: actions/checkout@v4
+
+      - name: Hadolint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0        
+        with:
+          dockerfile: Dockerfile
+        
 
   call-workflow-ci-java-maven:
     needs: call-workflow-ci-lint-docker
