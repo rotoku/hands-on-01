@@ -41,6 +41,7 @@ jobs:
     secrets: inherit
 
   call-workflow-ci-quality-code:
+    needs: call-workflow-ci-java-maven
     uses: kumabes-org/reusable-workflows-sonarqube/.github/workflows/main.yml@main
     with:
       runs-on: "ubuntu-latest"

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.*;
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of="cpf")
@@ -13,6 +13,11 @@ import lombok.*;
 public class Segurado {
     private String cpf;
     private String nome;
-    private List<Apolice> apolices = new ArrayList<>();
+    private String email;
+    private String telefone;
+    private Endereco endereco;
+    private String numero;
+    private String complemento;
     private LocalDate dataNascimento;
+    private List<Apolice> apolices;
 }

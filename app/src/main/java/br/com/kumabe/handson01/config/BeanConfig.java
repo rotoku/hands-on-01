@@ -1,31 +1,40 @@
 package br.com.kumabe.handson01.config;
 
-import br.com.kumabe.handson01.application.port.in.ApoliceUseCase;
-import br.com.kumabe.handson01.application.port.in.SeguradoUseCase;
-import br.com.kumabe.handson01.application.port.in.ServicoUseCase;
-import br.com.kumabe.handson01.application.port.out.ApoliceRepository;
-import br.com.kumabe.handson01.application.port.out.SeguradoRepository;
-import br.com.kumabe.handson01.application.port.out.ServicoRepository;
-import br.com.kumabe.handson01.application.service.ApoliceService;
-import br.com.kumabe.handson01.application.service.SeguradoService;
-import br.com.kumabe.handson01.application.service.ServicoService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import br.com.kumabe.handson01.domain.model.port.in.ApoliceUseCase;
+import br.com.kumabe.handson01.domain.model.port.in.EnderecoUseCase;
+import br.com.kumabe.handson01.domain.model.port.in.SeguradoUseCase;
+import br.com.kumabe.handson01.domain.model.port.in.ServicoUseCase;
+import br.com.kumabe.handson01.domain.model.port.out.ApoliceRepositoryPort;
+import br.com.kumabe.handson01.domain.model.port.out.EnderecoRepositoryPort;
+import br.com.kumabe.handson01.domain.model.port.out.SeguradoRepositoryPort;
+import br.com.kumabe.handson01.domain.model.port.out.ServicoRepositoryPort;
+import br.com.kumabe.handson01.domain.service.ApoliceService;
+import br.com.kumabe.handson01.domain.service.EnderecoService;
+import br.com.kumabe.handson01.domain.service.SeguradoService;
+import br.com.kumabe.handson01.domain.service.ServicoService;
 
 @Configuration
 public class BeanConfig {
     @Bean
-    public ApoliceUseCase apoliceUseCase(ApoliceRepository apoliceRepository) {
-        return new ApoliceService(apoliceRepository);
+    public ApoliceUseCase apoliceUseCase(ApoliceRepositoryPort apoliceRepositoryPort) {
+        return new ApoliceService(apoliceRepositoryPort);
     }
 
-    @Bean
-    public SeguradoUseCase seguradoUseCase(SeguradoRepository seguradoRepository) {
-        return new SeguradoService(seguradoRepository);
-    }
+     @Bean
+     public EnderecoUseCase enderecoUseCase(EnderecoRepositoryPort enderecoRepositoryPort) {
+         return new EnderecoService(enderecoRepositoryPort);
+     }
 
-    @Bean
-    public ServicoUseCase servicoUseCase(ServicoRepository servicoRepository) {
-        return new ServicoService(servicoRepository);
-    }
+     @Bean
+     public SeguradoUseCase seguradoUseCase(SeguradoRepositoryPort seguradoRepositoryPort) {
+         return new SeguradoService(seguradoRepositoryPort);
+     }
+
+     @Bean
+     public ServicoUseCase servicoUseCase(ServicoRepositoryPort servicoRepositoryPort) {
+         return new ServicoService(servicoRepositoryPort);
+     }
 }

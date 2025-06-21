@@ -3,8 +3,8 @@ package br.com.kumabe.handson01.adapter.out.persistence;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.kumabe.handson01.adapter.out.persistence.entity.SeguradoEntity;
+import br.com.kumabe.handson01.adapter.out.persistence.entity.EnderecoEntity;
 
 @Repository
-public interface SpringDataSeguradoRepository extends JpaRepository<SeguradoEntity, String> {
+public interface SpringDataEnderecoRepository extends JpaRepository<EnderecoEntity, String> {
 }

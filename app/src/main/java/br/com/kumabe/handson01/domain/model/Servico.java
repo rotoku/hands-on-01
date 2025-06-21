@@ -4,8 +4,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.kumabe.handson01.adapter.out.persistence.entity.ApoliceEntity;
 import lombok.*;
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of="codigo")
@@ -14,5 +15,5 @@ public class Servico {
     private Integer codigo;
     private String descricao;
     private BigDecimal valor;
-    private List<Apolice> apolices = new ArrayList<>();
+    private List<Apolice> apolices;
 }

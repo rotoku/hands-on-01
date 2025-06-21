@@ -1,14 +1,28 @@
-INSERT INTO segurados(nome, cpf, data_nascimento) VALUES
-('João Carlos da Silva', '123.456.789-00', '1985-05-12'),
-('Maria Fernanda Oliveira', '987.654.321-00', '1990-11-23'),
-('Pedro Henrique Souza', '456.789.123-00', '1978-03-07'),
-('Ana Carolina Mendes', '321.654.987-00', '1992-08-19'),
-('Lucas Gabriel Almeida', '789.123.456-00', '1987-12-30'),
-('Beatriz Santos Costa', '654.321.987-00', '1995-01-15'),
-('Rafael Augusto Lima', '852.963.741-00', '1983-06-04'),
-('Juliana Martins Pereira', '741.852.963-00', '1999-09-28'),
-('Gustavo Henrique Barros', '369.258.147-00', '1980-04-11'),
-('Larissa Alves Rocha', '258.147.369-00', '1993-07-21');
+INSERT into enderecos(cep, logradouro, bairro, cidade, estado) VALUES
+('12345-678', 'Rua A', 'Bairro Central', 'Cidade Exemplo', 'SP'),
+('23456-789', 'Avenida B', 'Bairro Norte', 'Cidade Exemplo', 'RJ'),
+('34567-890', 'Travessa C', 'Bairro Sul', 'Cidade Exemplo', 'MG'),
+('45678-901', 'Praça D', 'Bairro Leste', 'Cidade Exemplo', 'RS'),
+('56789-012', 'Rua E', 'Bairro Oeste', 'Cidade Exemplo', 'BA'),
+('67890-123', 'Avenida F', 'Bairro Central', 'Cidade Exemplo', 'PR'),
+('78901-234', 'Travessa G', 'Bairro Norte', 'Cidade Exemplo', 'SC'),
+('89012-345', 'Praça H', 'Bairro Sul', 'Cidade Exemplo', 'PE'),
+('90123-456', 'Rua I', 'Bairro Leste', 'Cidade Exemplo', 'CE'),
+('01234-567', 'Avenida J', 'Bairro Oeste', 'Cidade Exemplo', 'GO');
+
+INSERT INTO segurados(cpf, nome, email, telefone, endereco_cep, numero, complemento, data_nascimento) VALUES
+('123.456.789-00', 'João Silva', 'joao.silva@gmail.com', '11987654321', '12345-678', '100', 'Apto 1', '1985-01-15'),
+('987.654.321-00', 'Maria Oliveira', 'maria.oliveira@gmail.com', '11987654322', '23456-789', '200', 'Casa 2', '1990-02-20'),
+('456.789.123-00', 'Carlos Pereira', 'carlos.pereira@gmail.com', '11987654323', '34567-890', '300', 'Sala 3', '1982-03-25'),
+('321.654.987-00', 'Ana Costa', 'ana.costa@gmail.com', '11987654324', '45678-901', '400', 'Cobertura 4', '1995-04-30'),
+('789.123.456-00', 'Lucas Santos', 'lucas.santos@gmail.com', '11987654325', '56789-012', '500', 'Loja 5', '1988-05-05'),
+('654.321.987-00', 'Fernanda Lima', 'fernanda.lima@gmail.com', '11987654326', '67890-123', '600', 'Sala Comercial 6', '1992-06-10'),
+('852.963.741-00', 'Roberto Almeida', 'roberto.almeida@gmail.com', '11987654327', '78901-234', '700', 'Apto 7', '1980-07-15'),
+('741.852.963-00', 'Patrícia Rocha', 'patricia.rocha@gmail.com', '11987654328', '89012-345', '800', 'Casa 8', '1993-08-20'),
+('369.258.147-00', 'Eduardo Martins', 'eduardo.martins@gmail.com', '11987654329', '90123-456', '900', 'Sala 9', '1986-09-25'),
+('258.147.369-00', 'Juliana Souza', 'juliana.souza@gmail.com', '11987654330', '01234-567', '1000', 'Cobertura 10', '1991-10-30');
+
+
 
 INSERT INTO apolices(tipo_apolice, data_vigencia) VALUES
 ('AUTOMOVEL', '2026-01-01'),
